@@ -1,6 +1,6 @@
 ## Enhance $log using AngularJS Decorators 
 
-@see orginal blog at [The Solution Optimist](http://solutionoptimist.com/2013/10/07/enhance-log-using-angularjs-decorators/)
+<span style="font-size:.6em;color:#ababab;"@see orginal blog at</span> [The Solution Optimist](http://solutionoptimist.com/2013/10/07/enhance-log-using-angularjs-decorators/)
 
 ### Introducing `$provide.decorator()`
 
