@@ -1,8 +1,7 @@
 (function(){
     "use strict";
 
-    var INVALID_CONFIGURATION = "Logger::register( $log ) must be called before any getInstance() calls are supported!",
-        dependencies          = [
+    var dependencies = [
             'myApp/utils/supplant',
             'myApp/utils/DateTime',
             'myApp/utils/BrowserDetect'
@@ -58,10 +57,6 @@
                     getInstance = function( className, colorCSS )
                     {
                         className = ( className !== undefined ) ? className + separator : "";
-
-                        if ( $log === undefined ) {
-                            throw Error( INVALID_CONFIGURATION );
-                        }
 
                         return {
                             log   : prepareLogFn( $log.log,    className, colorCSS ),
