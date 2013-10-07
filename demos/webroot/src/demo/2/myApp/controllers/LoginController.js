@@ -10,31 +10,33 @@
 {
     "use strict";
 
-    var dependencies = [
-        'myApp/utils/supplant'
-    ];
+    var dependencies = [    ];
 
-    define( dependencies, function( supplant )
+    define( dependencies, function( )
     {
         var LoginController = function( authenticator, $scope, $log )
         {
+            $log = $log.getInstance( "LoginController", "color:#c44550; font-size:1.2em; background-color:#d3ebaa;" );
+
             var onLogin = function()
                 {
-                    $log.debug( supplant( "login( `{userName}` )", $scope ) );
+                    $log.debug( "login( `{userName}` )", $scope );
 
                     authenticator
                         .login( $scope.userName, $scope.password )
                         .then(
                             function (result)
                             {
-                                $log.debug( supplant( "login_onResult( `{sessionID}` )", result) );
-
-                                $scope.hasError = false;
+                                $scope.hasError     = false;
                                 $scope.errorMessage = '';
+                                $scope.sessionID    = result.sessionID;
+
+                                $log.debug( "login_onResult( `{sessionID}` )", result );
+
                             },
                             function (fault)
                             {
-                                $log.debug( supplant("login_onFault( `{0}` )", [fault]) );
+                                $log.debug( "login_onFault( `{0}` )", [fault] );
 
                                 $scope.hasError = true;
                                 $scope.errorMessage = fault;

@@ -10,11 +10,9 @@
 {
     "use strict";
 
-    var dependencies = [
-        'myApp/utils/supplant'
-    ];
+    var dependencies = [  ];
 
-    define( dependencies, function( supplant )
+    define( dependencies, function( )
     {
         /**
          * Mock Authenticator with promise-returning API
@@ -32,16 +30,16 @@
                     var dfd      = $q.defer(),
                         errorMsg = "Bad credentials. Please use a username of 'admin' for this mock logins !";
 
-                    $log.debug( supplant("login( `{0}` )", [username]) );
+                    $log.debug( "login( `{0}` )", [username] );
 
                         if( (username != "admin") && (password != "secretPassword") )
                         {
-                            $log.debug( supplant( "login_onFault( `{0}` )", [errorMsg]) );
+                            $log.debug( "login_onFault( `{0}` )", [errorMsg]);
                             dfd.reject( errorMsg );
                         }
                         else
                         {
-                            $log.debug( supplant("login_onResult(username = {0}, password = {1})", [username, password]) );
+                            $log.debug( "login_onResult(username = {0}, password = {1})", [username, password] );
 
                             session.sessionID = "SESSION_83732";
                             session.username = username;
