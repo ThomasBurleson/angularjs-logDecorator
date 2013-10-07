@@ -1,4 +1,6 @@
-## Enhance $log using AngularJS Decorators [WordPress Blog](http://solutionoptimist.com/2013/10/07/enhance-log-using-angularjs-decorators/)
+## Enhance $log using AngularJS Decorators 
+
+@see [WordPress Blog](http://solutionoptimist.com/2013/10/07/enhance-log-using-angularjs-decorators/)
 
 ### Introducing `$provide.decorator()`
 
