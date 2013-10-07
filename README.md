@@ -4,9 +4,9 @@
 
 AngularJS has a great hidden feature `$provider.decorator()` that allows developers to **intercept** services and **substitute**, **monitor**, or **modify** features of those *intercepted* services. This features is not deliberately hidden… rather it is masked by so many other great AngularJS features. 
 
-<div class="blockquote">
+
 AngularJS developers should **NEVER** directly use `console.log()` to log debugger messages. Use `$log` instead…
-</div>
+
 
 This interception process occurs when the service is constructed and can be used for:
 
@@ -21,9 +21,9 @@ In fact `angular-mocks.js` uses the `decorator()` to add
 
 Since we are adding or changing behaviors at service construction, I like to say that `decorator()` allows us to <strong>inject</strong> custom behaviors. So, let's explore how you can use `decorator()` to **enhance** the AngularJS <code>$log</code> service with extra functionality.
 
-<div class="blockquote">
+
 <strong>Before</strong> you continue reading this article, I highly recommend that you first read the <a href="http://solutionoptimist.com/2013/09/30/requirejs-angularjs-dependency-injection/">Dependency Injection using RequireJS and AngularJS</a> tutorial; since many of the examples use RequireJS `define()` and dependency injection.
-</div>
+
 
 ### Presenting the AngularJS `$log`
 
