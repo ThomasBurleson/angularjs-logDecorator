@@ -1,0 +1,64 @@
+<section id="outer_layout" class="outer_shadow">
+    <section id="inner_layout">
+        <section class="layout">
+            <section id="outer_container">
+                <section class="inner_container" >
+
+                    <header>
+                        <div class="logo">
+                            <h1 style="position:relative;top:-6px;"> &nbsp; </h1>
+                        </div>
+
+                    </header>
+
+                    <section class="content"
+                             ng-controller="LoginController"
+                             style="border-style:solid; border-width:1px;"  >
+
+                        <header>
+                            <h3>Enhancing AngularJS $log</h3>
+                            <p ng-hide="hasError">
+                                Don't worry!  This is a demo, fake login...
+                            </p>
+                            <div class="msg" style="height: 15px;" ng-show="hasError">
+                                {{errorMessage}}
+                            </div>
+                        </header>
+
+                        <article class="form_sec" >
+                            <form ng-submit="login();">
+                                <fieldset>
+                                  <span class="row">
+                                    <span class="fieldlabel">eMail:</span>
+                                    <input type="text" class="textbox" ng-model="userName">
+                                    <span class="field_msg"></span>
+                                  </span>
+                                  <span class="row">
+                                    <span class="fieldlabel">Password:</span>
+                                    <input type="password" class="textbox" ng-model="password">
+                                    <span class="field_msg"></span>
+                                  </span>
+                                   <span class="row forgot"></span>
+                                    <input type="hidden" name="form_check" value="nothing">
+                                    <input type="submit" value="JOIN" class="button red main small">
+                                </fieldset>
+                            </form>
+                        </article>
+
+                        <footer class="create_accnt">
+
+                            <p>
+                                Please open <span style="color:#be434c;font-weight: bold;">Developer Tools > Console</span> to see the $log output!
+                            </p>
+
+                        </footer>
+
+
+                    </section>
+
+
+                </section>
+            </section>
+        </section>
+    </section>
+</section>

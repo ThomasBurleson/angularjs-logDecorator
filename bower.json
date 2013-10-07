@@ -1,0 +1,13 @@
+{
+  "name": "angular-log-decorator",
+  "version": "0.0.1",
+  "devDependencies": {
+    "headjs-notify": "0.9.7",
+    "requirejs": "~2.1.8",
+    "requirejs-text": "2.0.10",
+    "angular": "~1.2",
+    "angular-route": "~1",
+    "angular-bootstrap": "~0.5.0"
+  },
+  "dependencies": {}
+}
