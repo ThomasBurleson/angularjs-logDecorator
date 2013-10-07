@@ -148,8 +148,6 @@ Before we talk about adding more features, let's first look at standard $log usa
 }());
 
 ```
-See <a href="https://github.com/ThomasBurleson/angularjs-logDecorator/wiki/demo_0">Demo</a>
-See <a href="https://github.com/ThomasBurleson/angularjs-logDecorator/src/0/bootstrap.js">Source</a>
 
 When the Login form submits and <code>LoginController::login('Thomas Burleson', 'unknown')</code> is invoked, the $log output to the browser console will show:
 
@@ -222,10 +220,6 @@ Let's use `$provider.decorator()` to intercept `$log.debug()` calls and dynamica
 
 })();
 ```
-See <a href="https://github.com/ThomasBurleson/angularjs-logDecorator/wiki/demo_1">Demo</a>
-See <a href="https://github.com/ThomasBurleson/angularjs-logDecorator/src/1/bootstrap.js">Source</a>
-
-
 
 <div class="blockquote">
 In this case, we used a **head-hook** interceptor to build a prepend string and **then** call the original function. Other decorators could use **tail-hook** interceptors or replace interceptors. The versatility of choices is really powerful.
@@ -359,13 +353,8 @@ Before we extned the `LogEnhancer` with more functionality, let's first refactor
 
 })();
 ```
-See <a href="https://github.com/ThomasBurleson/angularjs-logDecorator/wiki/demo_3_decorator_withLogEnhancer">Demo</a>
-See <a href="https://github.com/ThomasBurleson/angularjs-logDecorator/src/3/bootstrap.js">Source</a>
 
-
-<div class="blockquote">
 This package structuring (above) conforms to the <a href="http://en.wikipedia.org/wiki/Law_of_Demeter">Principle of Least Knowledge</a>. This approach encapsulates all the actual details of how `$log` is enhanced in the the LogEnhancer module.
-</div>
 
 Now we are ready to continue adding functionality to the `LogEnhancer`… functionality that *inject* classNames prepended into the output messages.
 
@@ -632,10 +621,6 @@ Then our browser console output would be:
 10:22:15:274 - LoginController::login_onFault( `Bad credentials. Please use a username of 'admin' for mock logins !` )
 
 ```
-
-See <a href="https://github.com/ThomasBurleson/angularjs-logDecorator/wiki/demo_3_decorator_withLogEnhancer">Demo</a>
-See <a href="https://github.com/ThomasBurleson/angularjs-logDecorator/src/3/bootstrap.js">Source</a>
-
 
 ### Summary
 
