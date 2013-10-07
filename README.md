@@ -166,9 +166,7 @@ Both the `LoginController` and the `Authenticator` are logging correctly to the 
 
 To resolve this we *could* modify each $log.debug() to manually prepend the classname and even add a time stamp to each; since timestamps would also allow us to casually check our code performance. 
 
-<div class="blockquote">
 But do NOT do this… that is a beginner's solution and is fuUgly.
-</div>
 
 Here is a sample output that we would *like* to see:
 
@@ -221,9 +219,9 @@ Let's use `$provider.decorator()` to intercept `$log.debug()` calls and dynamica
 })();
 ```
 
-<div class="blockquote">
+
 In this case, we used a **head-hook** interceptor to build a prepend string and **then** call the original function. Other decorators could use **tail-hook** interceptors or replace interceptors. The versatility of choices is really powerful.
-</div class="blockquote">
+
 
 With the above enhancements, the console output would show something like this:
 
@@ -388,9 +386,7 @@ define( dependencies, function( supplant )
 
 We used the `$log.getInstance()` method to return an object that looks like a $log but is NOT an actual AngularJS $log. How did we do this… our LogEnhancer decorated the AngularJS $log service and ADDED a `getInstance()` method to that service.
 
-<div class="blockquote">
 The elegance to the above solution is that $log still passes the <a href="http://en.wikipedia.org/wiki/Duck_test">Duck test</a> but internally knows how to prepend "LoginController" for any $log calls performed in the LoginController class.  
-</div>
 
 One line of code to support this feature within any class… that is pretty cool!
 
@@ -405,9 +401,7 @@ Let's itemize the set of features that we still need in order to fully-enable ou
 We can use the partial application (sometimes known as Function Currying) technique to capture the specific log function that we want to intercept.
 This techinque allows us to use a generic handler that is partially applied to each `$log` function. 
 
-<div class="blockquote">
 Personally I love elegant tricks like these!
-</div>
 
 ```
 // **********************************
@@ -642,7 +636,5 @@ As a ending-show teaser, I extended the `$log` decorator to support logging with
 
 ![image](http://solutionoptimist.com/wp-content/uploads/2013/10/logOutput.jpg)
 
-<div class="blockquote">
 Check out Demo #5 to see how Chrome Dev tools supports [console logging with color](https://developers.google.com/chrome-developer-tools/docs/console#styling_console_output_with_css).
-</div>
 
