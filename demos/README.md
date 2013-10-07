@@ -1,7 +1,7 @@
 ### Setup
 
 *  Use Bower to update the vendor libraries
-*  Start WebStorm webserver
+*  Start WebStorm webserver (see webserver configuration illustration for setup)
 *  Browse `http://localhost:8000/`
 *  Select a demo to run
 *  Open Dev tools to view the console log; when the Login button is selected!
