@@ -7,11 +7,10 @@
  * @website http://www.theSolutionOptimist.com
  *
  */
-(function(){
+(function(define){
     "use strict";
 
-    var INVALID_CONFIGURATION = "Logger::register( $log ) must be called before any getInstance() calls are supported!",
-        dependencies          = [
+    var dependencies          = [
             'mindspace/utils/supplant',
             'mindspace/utils/DateTime',
             'mindspace/utils/BrowserDetect'
@@ -21,8 +20,7 @@
     {
         var enchanceLogger = function( $log )
             {
-                var debugFn   = $log.debug,
-                    separator = "::",
+                var separator = "::",
                     /**
                      * Chrome Dev tools supports color logging
                      * @see https://developers.google.com/chrome-developer-tools/docs/console#styling_console_output_with_css
@@ -51,7 +49,7 @@
                                 args[0] = supplant("{0} - {1}{2}", [ now, className, args[0] ]);
                                 args    = colorify( supplant.apply( null, args ), colorCSS );
 
-                                debugFn.apply( null, args );
+                                logFn.apply( null, args );
                             };
 
                         return enhancedLogFn;
@@ -67,10 +65,6 @@
                     getInstance = function( className, colorCSS )
                     {
                         className = ( className !== undefined ) ? className + separator : "";
-
-                        if ( $log === undefined ) {
-                            throw Error( INVALID_CONFIGURATION );
-                        }
 
                         return {
                             log   : prepareLogFn( $log.log,    className, colorCSS ),
@@ -97,4 +91,4 @@
         return enchanceLogger;
     });
 
-})();
+})(define);

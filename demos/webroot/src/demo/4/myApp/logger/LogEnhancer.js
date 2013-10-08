@@ -1,75 +1,94 @@
-(function(){
+/**
+ * LogEnhancer
+ *
+ * Used within AngularJS to enhance functionality within the AngularJS $log service.
+ *
+ * @author  Thomas Burleson
+ * @website http://www.theSolutionOptimist.com
+ *
+ */
+(function(define){
     "use strict";
 
-    var INVALID_CONFIGURATION = "Logger::register( $log ) must be called before any getInstance() calls are supported!",
-        dependencies          = [
-            'myApp/utils/DateTime',
-            'myApp/utils/supplant'
+    var dependencies          = [
+            'mindspace/utils/supplant',
+            'mindspace/utils/DateTime',
+            'mindspace/utils/BrowserDetect'
         ];
 
-    define( dependencies, function( DateTime, supplant )
+    define( dependencies, function( supplant, DateTime, BrowserDetect )
     {
         var enchanceLogger = function( $log )
-        {
-            var debugFn = $log.debug,
-                /**
-                 * Partial application to pre-capture a logger function
-                 */
-                prepareLogFn = function( logFn, className )
-                {
+            {
+                var separator = "::",
                     /**
-                     * Invoke the specified `logFn` with the supplant functionality...
+                     * Chrome Dev tools supports color logging
+                     * @see https://developers.google.com/chrome-developer-tools/docs/console#styling_console_output_with_css
                      */
-                    var enhancedLogFn = function ( )
-                        {
-                            var args = Array.prototype.slice.call(arguments),
-                                now  = DateTime.formattedNow();
+                    colorify  = function( message, colorCSS )
+                    {
+                        var isChrome    = ( BrowserDetect.browser == "Chrome"),
+                            canColorize = isChrome && (colorCSS !== undefined );
 
-                            // prepend a timestamp and optional classname to the original output message
-                            args[0] = supplant("{0} - {1}{2}", [ now, className, args[0] ]);
+                        return canColorize ? [ "%c" + message, colorCSS ] : [ message ];
+                    },
+                    /**
+                     * Partial application to pre-capture a logger function
+                     */
+                    prepareLogFn = function( logFn, className, colorCSS )
+                    {
+                        /**
+                         * Invoke the specified `logFn` with the supplant functionality...
+                         */
+                        var enhancedLogFn = function ( )
+                            {
+                                var args = Array.prototype.slice.call(arguments),
+                                    now  = DateTime.formattedNow();
 
-                            debugFn.call( null,  supplant.apply( null, args ) );
+                                // prepend a timestamp and optional classname to the original output message
+                                args[0] = supplant("{0} - {1}{2}", [ now, className, args[0] ]);
+                                args    = colorify( supplant.apply( null, args ), colorCSS );
+
+                                logFn.apply( null, args );
+                            };
+
+                        return enhancedLogFn;
+                    },
+                    /**
+                     * Support to generate class-specific logger instance with classname only
+                     *
+                     * @param className Name of object in which $log.<function> calls is invoked.
+                     * @param colorCSS Object with CSS style color information for Chrome Dev Tools console log colorizing
+                     *
+                     * @returns {*} Logger instance
+                     */
+                    getInstance = function( className, colorCSS )
+                    {
+                        className = ( className !== undefined ) ? className + separator : "";
+
+                        return {
+                            log   : prepareLogFn( $log.log,    className, colorCSS ),
+                            info  : prepareLogFn( $log.info,   className, colorCSS ),
+                            warn  : prepareLogFn( $log.warn,   className, colorCSS ),
+                            debug : prepareLogFn( $log.debug,  className, colorCSS ),
+                            error : prepareLogFn( $log.error,  className )  // NO styling of ERROR messages
                         };
-
-                    return enhancedLogFn;
-                },
-                /**
-                 * Support to generate class-specific logger instance with classname only
-                 *
-                 * @param name
-                 * @returns {*} Logger instance
-                 */
-                getInstance = function( className )
-                {
-                    className = ( className !== undefined ) ? className + "::" : "";
-
-                    if ( $log === undefined ) {
-                        throw Error( INVALID_CONFIGURATION );
-                    }
-
-                    return {
-                        log   : prepareLogFn( $log.log,    className ),
-                        info  : prepareLogFn( $log.info,   className ),
-                        warn  : prepareLogFn( $log.warn,   className ),
-                        debug : prepareLogFn( $log.debug,  className ),
-                        error : prepareLogFn( $log.error,  className )
                     };
-                };
 
 
-            $log.log   = prepareLogFn( $log.log );
-            $log.info  = prepareLogFn( $log.info );
-            $log.warn  = prepareLogFn( $log.warn );
-            $log.debug = prepareLogFn( $log.debug );
-            $log.error = prepareLogFn( $log.error );
+                $log.log   = prepareLogFn( $log.log );
+                $log.info  = prepareLogFn( $log.info );
+                $log.warn  = prepareLogFn( $log.warn );
+                $log.debug = prepareLogFn( $log.debug );
+                $log.error = prepareLogFn( $log.error );
 
-            // Add special method to AngularJS $log
-            $log.getInstance = getInstance;
+                // Add special method to AngularJS $log
+                $log.getInstance = getInstance;
 
-            return $log;
-        };
+                return $log;
+            };
 
         return enchanceLogger;
     });
 
-})();
+})(define);
