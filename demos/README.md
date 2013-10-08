@@ -14,6 +14,8 @@ cd ./demos/build; bower install
 
 ### About the Demos
 
+![Demo Snapshot](http://solutionoptimist.com/wp-content/uploads/2013/10/logEnhancer_large2.jpg "Demo Snapshot")
+
 * Demo 0 : Application with mock login; using `Authenticator`, `LoginController` and standard `$log`
 * Demo 1 : Modifications to use AngularJS **Decorator** (without RequireJS `define()`)
 * Demo 2 : Modifications to use **RequireJS**
