@@ -19,7 +19,7 @@
          */
         var Authenticator = function( session, $q, $log)
         {
-            $log = $log.getInstance( "Authenticator", "color:#021b41; font-size:1em; background-color:#dedede;"  );
+            $log = $log.getInstance( "Authenticator", "color:#448844;"  );
 
             /**
              * Mock login() service for authenticatator.

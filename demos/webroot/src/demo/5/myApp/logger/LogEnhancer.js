@@ -11,9 +11,9 @@
     "use strict";
 
     var dependencies          = [
-            'mindspace/utils/supplant',
-            'mindspace/utils/DateTime',
-            'mindspace/utils/BrowserDetect'
+            'myApp/utils/supplant',
+            'myApp/utils/DateTime',
+            'myApp/utils/BrowserDetect'
         ];
 
     define( dependencies, function( supplant, DateTime, BrowserDetect )
@@ -21,6 +21,19 @@
         var enchanceLogger = function( $log )
             {
                 var separator = "::",
+                    /**
+                     * Capture the original $log functions; for use in enhancedLogFn()
+                     */
+                    _$log = (function( $log )
+                    {
+                        return {
+                            log   : $log.log,
+                            info  : $log.info,
+                            warn  : $log.warn,
+                            debug : $log.debug,
+                            error : $log.error
+                        };
+                    })( $log),
                     /**
                      * Chrome Dev tools supports color logging
                      * @see https://developers.google.com/chrome-developer-tools/docs/console#styling_console_output_with_css
@@ -52,6 +65,9 @@
                                 logFn.apply( null, args );
                             };
 
+                        // Only needed to support angular-mocks expectations
+                        enhancedLogFn.logs = [ ];
+
                         return enhancedLogFn;
                     },
                     /**
@@ -62,19 +78,19 @@
                      *
                      * @returns {*} Logger instance
                      */
-                    getInstance = function( className, colorCSS )
+                    getInstance = function( className, colorCSS, customSeparator )
                     {
-                        className = ( className !== undefined ) ? className + separator : "";
+
+                        className = ( className !== undefined ) ? className + (customSeparator || separator)  : "";
 
                         return {
-                            log   : prepareLogFn( $log.log,    className, colorCSS ),
-                            info  : prepareLogFn( $log.info,   className, colorCSS ),
-                            warn  : prepareLogFn( $log.warn,   className, colorCSS ),
-                            debug : prepareLogFn( $log.debug,  className, colorCSS ),
-                            error : prepareLogFn( $log.error,  className )  // NO styling of ERROR messages
+                            log   : prepareLogFn( _$log.log,    className, colorCSS ),
+                            info  : prepareLogFn( _$log.info,   className, colorCSS ),
+                            warn  : prepareLogFn( _$log.warn,   className, colorCSS ),
+                            debug : prepareLogFn( _$log.debug,  className, colorCSS ),
+                            error : prepareLogFn( _$log.error,  className )  // NO styling of ERROR messages
                         };
                     };
-
 
                 $log.log   = prepareLogFn( $log.log );
                 $log.info  = prepareLogFn( $log.info );
