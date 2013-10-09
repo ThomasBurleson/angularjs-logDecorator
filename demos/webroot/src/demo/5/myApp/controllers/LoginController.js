@@ -16,7 +16,7 @@
     {
         var LoginController = function( authenticator, $scope, $log )
         {
-            $log = $log.getInstance( "LoginController", "color:#c44550; font-size:1.2em; background-color:#d3ebaa;" );
+            $log = $log.getInstance( "LoginController", "color:#c44550;" );
 
             var onLogin = function()
                 {

@@ -44,6 +44,7 @@
          */
         var dependencies = [
                 'angular',
+                'myApp/logger/ExternalLogger',
                 'myApp/logger/LogDecorator',
                 'myApp/services/Authenticator',
                 'myApp/controllers/LoginController'
@@ -55,8 +56,11 @@
          * Now let's start our AngularJS app...
          * which uses RequireJS to load the sxm packages and code
          */
-        require( dependencies, function ( angular, LogDecorator, Authenticator, LoginController )
+        require( dependencies, function ( angular, $log, LogDecorator, Authenticator, LoginController )
         {
+            $log = $log.getInstance( "BOOTSTRAP" );
+            $log.debug( "Starting main application: {0}", [appName] );
+
             /**
              * Start the main application
              * We manually start this bootstrap process; since ng:app is gone
@@ -69,6 +73,7 @@
                    .factory(    "authenticator",   Authenticator       )
                    .controller( "LoginController", LoginController     );
 
+            $log.debug( "Bootstrapping from DOM element: `body`" );
             angular.bootstrap( document.getElementsByTagName("body"), [ appName ]);
 
         });
