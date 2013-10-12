@@ -38,7 +38,7 @@
                  * Chrome Dev tools supports color logging
                  * @see https://developers.google.com/chrome-developer-tools/docs/console#styling_console_output_with_css
                  */
-                    colorify  = function( message, colorCSS )
+                colorify  = function( message, colorCSS )
                 {
                     var isChrome    = ( BrowserDetect.browser == "Chrome"),
                         canColorize = isChrome && (colorCSS !== undefined );
@@ -48,7 +48,7 @@
                 /**
                  * Partial application to pre-capture a logger function
                  */
-                    prepareLogFn = function( logFn, className, colorCSS )
+                prepareLogFn = function( logFn, className, colorCSS )
                 {
                     /**
                      * Invoke the specified `logFn` with the supplant functionality...
@@ -78,7 +78,7 @@
                  *
                  * @returns {*} Logger instance
                  */
-                    getInstance = function( className, colorCSS, customSeparator )
+                getInstance = function( className, colorCSS, customSeparator )
                 {
 
                     className = ( className !== undefined ) ? className + (customSeparator || separator)  : "";
