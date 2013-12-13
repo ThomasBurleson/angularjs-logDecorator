@@ -5,6 +5,8 @@
 *  @see Blog [The Solution Optimist](http://solutionoptimist.com/2013/10/07/enhance-log-using-angularjs-decorators/)
 *  @see Live Demo [Quizzler](http://thomasburleson.github.io/angularjs-Quizzler/#/loginl)
 
+---
+
 ### Introducing `$provide.decorator()`
 
 AngularJS has a great hidden feature `$provider.decorator()` that allows developers to **intercept** services and **substitute**, **monitor**, or **modify** features of those *intercepted* services. This features is not deliberately hidden… rather it is masked by so many other great AngularJS features. 
