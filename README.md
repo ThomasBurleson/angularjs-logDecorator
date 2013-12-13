@@ -1,4 +1,6 @@
-## Enhance $log using AngularJS Decorators 
+## Enhance $log using AngularJS Decorators
+
+![quizzler_logging](https://f.cloud.github.com/assets/210413/1701319/e169e7ba-604f-11e3-9f61-8fb45fad300e.jpg)
 
 @see [The Solution Optimist](http://solutionoptimist.com/2013/10/07/enhance-log-using-angularjs-decorators/)
 
