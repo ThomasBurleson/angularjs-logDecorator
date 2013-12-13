@@ -191,7 +191,7 @@ Before we start modifying *ALL* of our classes (like a beginning developer), let
 
 Let's use `$provider.decorator()` to intercept `$log.debug()` calls and dynamically prepend timestamp information.
 
-```
+```javascript
 (function() {  
   "use strict";
 
@@ -251,7 +251,7 @@ To achieve those additional feature is a little more complicated… but not as d
 
 Before we extned the `LogEnhancer` with more functionality, let's first refactor our current code. We will refactor for easy reuse across multiple applications.
 
-```
+```javascript
 // **********************************
 // Module: bootstrap.js 
 // **********************************
@@ -281,7 +281,7 @@ Before we extned the `LogEnhancer` with more functionality, let's first refactor
 })();
 ```
 
-```
+```javascript
 // *****************************************
 // Module: myApp/logger/LogDecorator.js
 // *****************************************
@@ -317,7 +317,7 @@ Before we extned the `LogEnhancer` with more functionality, let's first refactor
 })();
 ```
 
-```
+```javascript
 // ****************************************
 // Module: myApp/logger/LogEnhancer.js
 // ****************************************
@@ -371,7 +371,7 @@ To easily support the `$log` functionality which prepends classNames to output m
 
 Perhaps a code snippet will explain:
 
-```
+```javascript
 // ****************************************
 // Module: myApp/controllers/LoginController.js
 // ****************************************
@@ -410,7 +410,7 @@ This techinque allows us to use a generic handler that is partially applied to e
 
 Personally I love elegant tricks like these!
 
-```
+```javascript
 // **********************************
 // Module: myApp/logger/LogEnhancer.js
 // **********************************
@@ -470,7 +470,7 @@ Personally I love elegant tricks like these!
 Notice that the `debugFn.call( … )` method also uses a `supplant()` method to transform any tokenized content into a final output string.
 e.g.
 
-```
+```javascript
     var user = { who:"Thomas Burleson"", email="ThomasBurleson@gmail.com"" };
     
     // This should output:
@@ -487,7 +487,7 @@ So not only have we intercepted the $log functions to prepend a timestamp, we al
 
 Finally we need to implement the `getInstance()` method and publish it as part of the AngularJS `$log` service.
 
-```
+```javascript
 // **********************************
 // Module: myApp/logger/LogEnhancer.js
 // **********************************
@@ -575,7 +575,7 @@ We modified our partial application function `prepareLogFn()` to accept an optio
 
 Now if we modify our original example code:
 
-```
+```javascript
 (function()
 {
 	"use strict";
