@@ -2,8 +2,8 @@
 
 ![quizzler_logging](https://f.cloud.github.com/assets/210413/1701319/e169e7ba-604f-11e3-9f61-8fb45fad300e.jpg)
 
-@see Blog [The Solution Optimist](http://solutionoptimist.com/2013/10/07/enhance-log-using-angularjs-decorators/)
-@see Live Demo [Quizzler](http://thomasburleson.github.io/angularjs-Quizzler/#/loginl)
+*  @see Blog [The Solution Optimist](http://solutionoptimist.com/2013/10/07/enhance-log-using-angularjs-decorators/)
+*  @see Live Demo [Quizzler](http://thomasburleson.github.io/angularjs-Quizzler/#/loginl)
 
 ### Introducing `$provide.decorator()`
 
