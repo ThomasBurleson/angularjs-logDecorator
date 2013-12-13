@@ -641,7 +641,7 @@ I have created a GitHub repository with the source and examples used within this
 
 As a ending-show teaser, I extended the `$log` decorator to support logging with colors. Do YOU know how to achieve the results shown below?
 
-![image](http://solutionoptimist.com/wp-content/uploads/2013/10/logOutput.jpg)
+![image](http://solutionoptimist.com/wp-content/uploads/2013/10/Demo_with_Console.jpg)
 
 Check out Demo #5 to see how Chrome Dev tools supports [console logging with color](https://developers.google.com/chrome-developer-tools/docs/console#styling_console_output_with_css).
 
