@@ -38,7 +38,7 @@ AngularJS has a built-in service **$log** that is very useful for logging debug 
 
 Before we talk about adding more features, let's first look at standard $log usages. Here is an example use of the normal (un-enhanced) **$log** service within a mock Authenticator service class:
 
-```
+```javascript
 // *********************************************
 // bootstrap.js
 // *********************************************
