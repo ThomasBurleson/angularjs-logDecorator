@@ -23,7 +23,7 @@
                 $provide.decorator( '$log', [ "$delegate", function( $delegate )
                 {
                     // NOTE: the LogEnhancer module returns a FUNCTION that we named `enhanceLoggerFn`
-                    //       All the details of how the `enchancement` works is encapsulated in LogEnhancer!
+                    //       All the details of how the `enhancement` works is encapsulated in LogEnhancer!
 
                     enhanceLoggerFn( $delegate );
 
