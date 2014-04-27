@@ -1,7 +1,7 @@
 {
 	"author": "Thomas Burleson <ThomasBurleson@Gmail.com>",
 	"name": "angular-logDecorator",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"homepage": "http://solutionoptimist.com/2013/10/07/enhance-angularjs-logging-using-decorators/",
 	"bugs": "",
 	"repository": {
