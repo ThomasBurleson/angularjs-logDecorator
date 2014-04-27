@@ -1,0 +1,25 @@
+{
+	"author": "Thomas Burleson <ThomasBurleson@Gmail.com>",
+	"name": "angular-logDecorator",
+	"version": "0.1.0",
+	"homepage": "http://solutionoptimist.com/2013/10/07/enhance-angularjs-logging-using-decorators/",
+	"bugs": "",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ThomasBurleson/angularjs-logDecorator"
+	},
+    "licenses": {
+      "type" : "MIT",
+      "url"  : "https://github.com/ThomasBurleson/angularjs-logDecorator/blob/master/LICENSE"
+    },
+	"dependencies": {
+    },
+	"devDependencies": {
+		  "grunt": "~0.4.1"
+        , "grunt-bump": "~0.0.13"
+		, "grunt-contrib-clean": "~0.4.1"
+        , "grunt-contrib-copy": "~0.4.1"
+		, "grunt-contrib-requirejs": "~0.4.1"
+		, "grunt-contrib-uglify": "~0.2.0"
+	}
+}
