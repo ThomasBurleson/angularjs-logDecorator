@@ -12,8 +12,9 @@
 
     head.js(
 
-      { angular   : "/assets/vendor/angular/angular.js",      size: "551057"  },
-      { require   : "/assets/vendor/requirejs/require.js",    size: "80196"   }
+      { angular      : "/assets/vendor/angular/angular.js"                          ,    size: "551057"  },
+      { require      : "/assets/vendor/requirejs/require.js"                        ,    size: "80196"   },
+      { logDecorator : "/assets/vendor/angular-logDecorator/angular-logDecorator.min.js",    size: "22205"   }
 
     )
     .ready( "ALL", function() {
@@ -43,12 +44,9 @@
          * one of which is the Authentication module.
          */
         var dependencies = [
-                'angular',
-                'myApp/logger/ExternalLogger',
-                'myApp/logger/LogDecorator',
+                'mindspace/logger/ExternalLogger',
                 'myApp/services/Authenticator',
                 'myApp/controllers/LoginController'
-
             ],
             appName = 'myApp.Application';
 
@@ -56,7 +54,7 @@
          * Now let's start our AngularJS app...
          * which uses RequireJS to load the sxm packages and code
          */
-        require( dependencies, function ( angular, $log, LogDecorator, Authenticator, LoginController )
+        require( dependencies, function ( $log, Authenticator, LoginController )
         {
             $log = $log.getInstance( "BOOTSTRAP" );
             $log.debug( "Starting main application: {0}", [appName] );
@@ -67,11 +65,10 @@
              * ( necessary to allow Loader splash pre-AngularJS activity to finish properly )
              */
 
-            angular.module(     appName,           [ ]                 )
-                   .config(     LogDecorator                           )
-                   .value(      "session",         { sessionID : null })
-                   .factory(    "authenticator",   Authenticator       )
-                   .controller( "LoginController", LoginController     );
+            angular.module(     appName,           [ 'ng.logDecorator' ]   )
+                   .value(      "session",         { sessionID : null }    )
+                   .factory(    "authenticator",   Authenticator           )
+                   .controller( "LoginController", LoginController         );
 
             $log.debug( "Bootstrapping from DOM element: `body`" );
             angular.bootstrap( document.getElementsByTagName("body"), [ appName ]);
