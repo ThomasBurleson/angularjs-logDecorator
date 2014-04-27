@@ -1,6 +1,11 @@
 /**
- * String supplant global utility (similar to but more powerful than sprintf() ).
- * Usages:
+ * @author      Thomas Burleson
+ * @date        November, 2013
+ * @description
+ *
+ *  String supplant global utility (similar to but more powerful than sprintf() ).
+ *
+ *  Usages:
  *
  *      var user = {
  *              first : "Thomas",
@@ -25,7 +30,7 @@
 (function( define ) {
     "use strict";
 
-    define( function ( )
+    define( [], function ( )
     {
         // supplant() method from Crockfords `Remedial Javascript`
 
@@ -37,7 +42,7 @@
                     r = values;
 
                 try {
-                    for (var s in p) { r = r[p[s]];  };
+                    for (var s in p) { r = r[p[s]];  }
                 } catch(e){
                     r = a;
                 }
