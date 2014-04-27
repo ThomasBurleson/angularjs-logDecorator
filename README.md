@@ -14,6 +14,12 @@ Which will install the release library code as a Bower package. Developers can u
 1. Concatenated : `/angular-logDecorator/release/angular-logDecorator.js`
 2. Minified : `/angular-logDecorator/release/angular-logDecorator.min.js`
 
+<br/>
+
+> It is important to note that this is an AMD library and can only be used within applications using RequireJS.
+
+<br/>
+
 To use the Logging classes within your own SPA, make sure the script 
 
 `/bower_components/angular-logDecorator/release/angular-logDecorator.min.js`
