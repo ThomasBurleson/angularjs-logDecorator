@@ -1,9 +1,10 @@
 {
     "name": "angular-logDecorator",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "main": "release/amd/angular-logDecorator",
     "ignore": [
           "demos"
+        , "src"
         , "node_modules"
         , ".gitignore"
         , "bower.json"
