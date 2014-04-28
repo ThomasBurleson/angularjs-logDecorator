@@ -10,32 +10,25 @@
  (function( window, head ) {
     "use strict";
 
+
     head.js(
 
-      { angular      : "/assets/vendor/angular/angular.js"                          ,    size: "551057"  },
-      { require      : "/assets/vendor/requirejs/require.js"                        ,    size: "80196"   },
-
-      { logDecorator : "/assets/vendor/angular-logDecorator/release/amd/angular-logDecorator.min.js",    size: "22205"   }
+      { angular      : "/assets/vendor/angular/angular.js"                                  ,    size: "551057"  },
+      { require      : "/assets/vendor/requirejs/require.js"                                ,    size: "80196"   },
+      { logDecorator : "/assets/vendor/angular-logDecorator/amd/angular-logDecorator.min.js",    size: "22205"   }
 
     )
     .ready( "ALL", function() {
+
+        // Dynamically load the application files...
 
         require.config (
         {
         	appDir  : '',
         	baseUrl : '/src/demo/5',
-            priority: 'angular',
         	paths   :
         	{
-        		'angular'      : '/assets/vendor/angular/angular',
                 'utils'        : 'myApp/utils'
-        	},
-        	shim    :
-        	{
-        		'angular':
-        		{
-        			exports : 'angular'
-        		}
         	}
         });
 
@@ -66,7 +59,7 @@
              * ( necessary to allow Loader splash pre-AngularJS activity to finish properly )
              */
 
-            angular.module(     appName,           [ 'ng.logDecorator' ]   )
+            angular.module(     appName,           [ 'mindspace.logDecorator' ]   )
                    .value(      "session",         { sessionID : null }    )
                    .factory(    "authenticator",   Authenticator           )
                    .controller( "LoginController", LoginController         );

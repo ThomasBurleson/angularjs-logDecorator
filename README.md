@@ -27,7 +27,7 @@ To use the Logging classes within your own SPA, make sure the script
 is loaded and then include the dependeny with your own code. e.g.
 
 ```js
-var spa = angular.module( MyCustomApp, [ 'ng.logDecorator' ] );
+var spa = angular.module( MyCustomApp, [ 'mindspace.logDecorator' ] );
 ```
 
 

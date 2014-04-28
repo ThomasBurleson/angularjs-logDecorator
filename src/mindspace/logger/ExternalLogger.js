@@ -16,8 +16,8 @@
     "use strict";
 
     define([
-            "logger/LogEnhancer",
-            "utils/BrowserDetect"
+            "mindspace/logger/LogEnhancer",
+            "mindspace/utils/BrowserDetect"
         ],
         function ExternalLogger(LogEnhancer, BrowserDetect)
         {

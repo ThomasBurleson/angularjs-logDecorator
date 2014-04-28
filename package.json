@@ -5,9 +5,6 @@
     "url": "http://www.solutionOptimist.com/"
   },
   "main": "./release/amd/angular-logDecorator.js",
-  "browserify": {
-    "transform": "deamdify"
-  },
   "name": "angular-logDecorator",
   "version": "0.1.2",
   "homepage": "http://solutionoptimist.com/2013/10/07/enhance-angularjs-logging-using-decorators/",

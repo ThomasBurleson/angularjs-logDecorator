@@ -13,10 +13,10 @@
      * Register the class with RequireJS.
      */
     define([
-            "utils/supplant",
-            "utils/makeTryCatch",
-            "utils/DateTime",
-            "utils/BrowserDetect"
+            "mindspace/utils/supplant",
+            "mindspace/utils/makeTryCatch",
+            "mindspace/utils/DateTime",
+            "mindspace/utils/BrowserDetect"
         ],
         function (supplant, makeTryCatch, DateTime, BrowserDetect)
         {

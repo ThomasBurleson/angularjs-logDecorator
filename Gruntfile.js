@@ -8,7 +8,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-uglify')
+    grunt.loadNpmTasks('grunt-urequire');
 
 
     var buildDir = "/release";
@@ -61,16 +62,16 @@ module.exports = function(grunt) {
             release: {
                 files: [
                     {
-                        src: './release/angular-logDecorator.js',
-                        dest: './demos/webroot/assets/vendor/angular-logDecorator/angular-logDecorator.js'
+                        src: './release/amd/angular-logDecorator.js',
+                        dest: './demos/webroot/assets/vendor/angular-logDecorator/amd/angular-logDecorator.js'
                     }
                 ]
             },
             releaseMin: {
                 files: [
                     {
-                        src: './release/angular-logDecorator.min.js',
-                        dest: './demos/webroot/assets/vendor/angular-logDecorator/angular-logDecorator.min.js'
+                        src: './release/amd/angular-logDecorator.min.js',
+                        dest: './demos/webroot/assets/vendor/angular-logDecorator/amd/angular-logDecorator.min.js'
                     }
                 ]
             }
@@ -126,9 +127,30 @@ module.exports = function(grunt) {
                     commitFiles: ["-a"],
                     push: false
             }
+        },
+
+        urequire:{
+            LibAsUMD: {
+                template: "UMD", // default, can be ommited
+                path: "./src",
+                dstPath: "./release/common/src"
+            },
+
+            LibCombinedToWorkEverywhere: {
+                template:'combined',
+                path: "./src",
+                main: 'angular-logDecorator',
+                //dstPath: "./release/common/angular-logDecorator.js"
+                dstPath: "./demos/webroot/assets/vendor/angular-logDecorator/release/common/angular-logDecorator.js"
+            },
+
+            _defaults: {
+                verbose: false,
+                scanAllow: true,
+                allNodeRequires: true,
+                noRootExports: false
+            }
         }
-
-
 
     };
 
@@ -158,6 +180,5 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('default', ['release','release.min']);
-
 
 };
