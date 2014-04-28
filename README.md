@@ -54,12 +54,12 @@ Demo #5 (bootstrap.js) shows an example of how to use the Logging classes within
 <br/>
 
 ```js
-    var pluginURL = "/assets/vendor/angular-logDecorator/release/amd/angular-logDecorator.min.js" ;
+    var pluginURL = "/assets/vendor/angular-logDecorator/release/amd/" ;
     head.js(
 
       { angular      : "/assets/vendor/angular/angular.js"  },
       { require      : "/assets/vendor/requirejs/require.js" },
-      { logDecorator :  pluginURL  }
+      { logDecorator :  pluginURL + "angular-logDecorator.min.js"  }
 
     )
     .ready( "ALL", function() {
