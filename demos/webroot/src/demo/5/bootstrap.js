@@ -13,9 +13,9 @@
 
     head.js(
 
-      { angular      : "/assets/vendor/angular/angular.js"                                  ,    size: "551057"  },
-      { require      : "/assets/vendor/requirejs/require.js"                                ,    size: "80196"   },
-      { logDecorator : "/assets/vendor/angular-logDecorator/amd/angular-logDecorator.min.js",    size: "22205"   }
+      { angular      : "/assets/vendor/angular/angular.js"                                           ,    size: "551057"  },
+      { require      : "/assets/vendor/requirejs/require.js"                                         ,    size: "80196"   },
+      { logDecorator : "/assets/vendor/angular-logDecorator/release/amd/angular-logDecorator.min.js" ,    size: "22205"   }
 
     )
     .ready( "ALL", function() {
