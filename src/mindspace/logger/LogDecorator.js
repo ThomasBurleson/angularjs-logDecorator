@@ -16,7 +16,7 @@
     /**
      * Register the class with RequireJS.
      */
-    define(['logger/LogEnhancer'], function (enhanceLoggerFn)
+    define(['mindspace/logger/LogEnhancer'], function (enhanceLoggerFn)
     {
         /**
          * Decorate the $log to use inject the LogEnhancer features.

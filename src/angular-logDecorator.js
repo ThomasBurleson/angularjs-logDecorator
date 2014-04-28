@@ -23,8 +23,9 @@
 
     ], function( LogDecorator, ExternalLogger )
     {
+        var moduleName = 'mindspace.logDecorator';
 
-        angular.module( "ng.logDecorator" , [ ] )
+        angular.module( moduleName , [ ] )
                .config( LogDecorator            );
 
     });

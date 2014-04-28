@@ -30,7 +30,7 @@
 (function( define ) {
     
 
-    define( 'utils/supplant',[], function ( )
+    define( 'mindspace/utils/supplant',[], function ( )
     {
         // supplant() method from Crockfords `Remedial Javascript`
 
@@ -87,7 +87,7 @@
 {
     
 
-    define( 'utils/makeTryCatch',[], function()
+    define( 'mindspace/utils/makeTryCatch',[], function()
     {
         /**
          * Implement a tryCatch() method that logs exceptions for method invocations AND
@@ -172,7 +172,7 @@
     /**
      * Register the class with RequireJS.
      */
-    define('utils/DateTime',[], function ()
+    define('mindspace/utils/DateTime',[], function ()
     {
         /**
          * Creates a date timestamp string.
@@ -249,7 +249,7 @@
 {
     
 
-    define('utils/BrowserDetect',[], function ()
+    define('mindspace/utils/BrowserDetect',[], function ()
     {
         var BrowserDetect = {
 
@@ -437,11 +437,11 @@
     /**
      * Register the class with RequireJS.
      */
-    define('logger/LogEnhancer',[
-            "utils/supplant",
-            "utils/makeTryCatch",
-            "utils/DateTime",
-            "utils/BrowserDetect"
+    define('mindspace/logger/LogEnhancer',[
+            "mindspace/utils/supplant",
+            "mindspace/utils/makeTryCatch",
+            "mindspace/utils/DateTime",
+            "mindspace/utils/BrowserDetect"
         ],
         function (supplant, makeTryCatch, DateTime, BrowserDetect)
         {
@@ -565,7 +565,7 @@
     /**
      * Register the class with RequireJS.
      */
-    define('mindspace/logger/LogDecorator',['logger/LogEnhancer'], function (enhanceLoggerFn)
+    define('mindspace/logger/LogDecorator',['mindspace/logger/LogEnhancer'], function (enhanceLoggerFn)
     {
         /**
          * Decorate the $log to use inject the LogEnhancer features.
@@ -614,8 +614,8 @@
     
 
     define('mindspace/logger/ExternalLogger',[
-            "logger/LogEnhancer",
-            "utils/BrowserDetect"
+            "mindspace/logger/LogEnhancer",
+            "mindspace/utils/BrowserDetect"
         ],
         function ExternalLogger(LogEnhancer, BrowserDetect)
         {
@@ -691,8 +691,9 @@
 
     ], function( LogDecorator, ExternalLogger )
     {
+        var moduleName = 'mindspace.logDecorator';
 
-        angular.module( "ng.logDecorator" , [ ] )
+        angular.module( moduleName , [ ] )
                .config( LogDecorator            );
 
     });
