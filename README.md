@@ -8,7 +8,23 @@ This repository has several purposes:
 4.  Provides an example of using the Bower component `mindspace.logDecorator` module within custom SPA: **Demo #5**
 
 <br/>
-### Bower Component Installation
+### Build the Bower Component
+
+The `angular-logDecorator` library is deployed as a concatenated AMD library. To build the library (and its minified version), open a Terminal window and execute the following commands.
+
+1. Install the **Grunt** libraries ```npm update```
+2. Build the libraries using ```Grunt``` 
+
+The new compiled libraries are deployed to:
+
+1.  ```./release/amd/*.js```
+2.  ```./demos/webroot/assets/vendor/angular-logDecorator/amd``` 
+
+
+> Future versions for deploying as CommonJS libraries will be available soon...
+
+<br/>
+### Using/Installing the Bower Component 
 
 Simple use the Bower command to install this component (logDecorator module/library) within your AMD SPA application
 
