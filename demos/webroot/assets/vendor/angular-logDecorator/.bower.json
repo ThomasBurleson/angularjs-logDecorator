@@ -1,9 +1,10 @@
 {
   "name": "angular-logDecorator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "release/amd/angular-logDecorator",
   "ignore": [
     "demos",
+    "src",
     "node_modules",
     ".gitignore",
     "bower.json",
@@ -17,13 +18,13 @@
     "requirejs": "~2.1.8"
   },
   "homepage": "https://github.com/ThomasBurleson/angularjs-logDecorator",
-  "_release": "0.1.1",
+  "_release": "0.1.2",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.1",
-    "commit": "a16c4b8d5e21375f86c74ee1d7a90692753e342b"
+    "tag": "v0.1.2",
+    "commit": "d77a6c64a52059ac5d46db78f37d5f2aa34b2088"
   },
   "_source": "git://github.com/ThomasBurleson/angularjs-logDecorator.git",
-  "_target": "~0.1.1",
+  "_target": "^0.1.2",
   "_originalSource": "angular-logDecorator"
 }

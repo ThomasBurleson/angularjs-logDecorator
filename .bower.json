@@ -13,9 +13,6 @@
         , "package.json"
     ],
     "dependencies": {
-        "requirejs": "~2.1.8"
-    },
-    "devDependencies": {
-        "requirejs": "~2.1.8"
+
     }
 }

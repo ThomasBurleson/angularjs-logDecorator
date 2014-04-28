@@ -1,8 +1,42 @@
-## Enhance $log using AngularJS Decorators 
+## AngularJS Enhanced Logging Plugin 
+
+This library provides an easily installed AngularJS module: **ng.logDecorator**.
+
+### Installation
+
+Simple use the Bower command to install this library within your application
+
+```txt
+bower install angular-logDecorator --save
+```
+Which will install the release library code as a Bower package. Developers can use the following versions within their own AngularJS SPAs:
+
+1. Concatenated : `/angular-logDecorator/release/angular-logDecorator.js`
+2. Minified : `/angular-logDecorator/release/angular-logDecorator.min.js`
+
+<br/>
+
+> It is important to note that this is an AMD library and can only be used within applications using RequireJS.
+
+<br/>
+
+To use the Logging classes within your own SPA, make sure the script 
+
+`/bower_components/angular-logDecorator/release/angular-logDecorator.min.js`
+
+is loaded and then include the dependeny with your own code. e.g.
+
+```js
+var spa = angular.module( MyCustomApp, [ 'ng.logDecorator' ] );
+```
+
+
+## Tutorial
+### Enhance $log using AngularJS Decorators 
 
 @see [The Solution Optimist](http://solutionoptimist.com/2013/10/07/enhance-log-using-angularjs-decorators/)
 
-### Introducing `$provide.decorator()`
+#### Introducing `$provide.decorator()`
 
 AngularJS has a great hidden feature `$provider.decorator()` that allows developers to **intercept** services and **substitute**, **monitor**, or **modify** features of those *intercepted* services. This features is not deliberately hidden… rather it is masked by so many other great AngularJS features. 
 
@@ -27,13 +61,13 @@ Since we are adding or changing behaviors at service construction, I like to say
 <strong>Before</strong> you continue reading this article, I highly recommend that you first read the <a href="http://solutionoptimist.com/2013/09/30/requirejs-angularjs-dependency-injection/">Dependency Injection using RequireJS and AngularJS</a> tutorial; since many of the examples use RequireJS `define()` and dependency injection.
 
 
-### Presenting the AngularJS `$log`
+#### Presenting the AngularJS `$log`
 
 AngularJS has a built-in service **$log** that is very useful for logging debug and error messages to a console. Using this injected service, developers can easily monitor application workflows, confirm call sequences, etc. And since it is such a common useful mechanism, developers often complain about wanting more features. 
 
 Before we talk about adding more features, let's first look at standard $log usages. Here is an example use of the normal (un-enhanced) **$log** service within a mock Authenticator service class:
 
-```
+```js
 // *********************************************
 // bootstrap.js
 // *********************************************
@@ -56,16 +90,16 @@ Before we talk about adding more features, let's first look at standard $log usa
                     var dfd      = $q.defer(),
                         errorMsg = "Bad credentials. Please use a username of 'admin' for this mock login !";
 
-                    $log.debug( supplant("login( `{0}` )", [username]) );
+                    $log.debug( "login( `{0}` )", [username] );
 
                     if( (username != "admin") && (password != "secretPassword") )
                     {
-                        $log.debug( supplant( "login_onFault( `{0}` )", [errorMsg]) );
+                        $log.debug(  "login_onFault( `{0}` )", [errorMsg] );
                         dfd.reject( errorMsg );
                     }
                     else
                     {
-                        $log.debug( supplant("login_onResult(username = {0}, password = {1})", [username, password]) );
+                        $log.debug( "login_onResult(username = {0}, password = {1})", [username, password] );
 
                         session.sessionID = "SESSION_83732";
                         session.username = username;
@@ -103,21 +137,21 @@ Before we talk about adding more features, let's first look at standard $log usa
         {
             var onLogin = function()
             {
-                $log.debug( supplant( "login( `{userName}` )", $scope ) );
+                $log.debug(  "login( `{userName}` )", $scope  );
 
                 authenticator
                     .login( $scope.userName, $scope.password )
                     .then(
                     function (result)
                     {
-                        $log.debug( supplant( "login_onResult( `{sessionID}` )", result) );
+                        $log.debug(  "login_onResult( `{sessionID}` )", result );
 
                         $scope.hasError = false;
                         $scope.errorMessage = '';
                     },
                     function (fault)
                     {
-                        $log.debug( supplant("login_onFault( `{0}` )", [fault]) );
+                        $log.debug( "login_onFault( `{0}` )", [fault] );
 
                         $scope.hasError = true;
                         $scope.errorMessage = fault;
@@ -153,7 +187,7 @@ Before we talk about adding more features, let's first look at standard $log usa
 
 When the Login form submits and <code>LoginController::login('Thomas Burleson', 'unknown')</code> is invoked, the $log output to the browser console will show:
 
-```
+```txt
 login( `Thomas Burleson` )
 login( `Thomas Burleson` )
 login_onFault( `Bad credentials. Please use a username of 'admin' for mock logins !` )
@@ -172,7 +206,7 @@ But do NOT do this… that is a beginner's solution and is fuUgly.
 
 Here is a sample output that we would *like* to see:
 
-```
+```txt
 10:22:15:143 - LoginController::login( `Thomas Burleson` )
 10:22:15:167 - Authenticator::login( `Thomas Burleson` )
 10:22:15:250 - Authenticator::login_onFault( `Bad credentials. Please use a username of 'admin' for mock logins !` )
@@ -182,11 +216,11 @@ Here is a sample output that we would *like* to see:
 
 Before we start modifying *ALL* of our classes (like a beginning developer), let's pause and realize the the `$provide.decorator()` will allow us to centralize and hide all of the additional behavior and functionaltiy we want.
 
-### Using `$provider.decorator()` 
+#### Using `$provider.decorator()` 
 
 Let's use `$provider.decorator()` to intercept `$log.debug()` calls and dynamically prepend timestamp information.
 
-```
+```js
 (function() {  
   "use strict";
 
@@ -242,11 +276,11 @@ But we also wanted to easily include the classname for each method invoked!
 
 To achieve those additional feature is a little more complicated… but not as difficulat as you might think!
 
-### Refactoring our code for reuse 
+#### Refactoring our code for reuse 
 
 Before we extned the `LogEnhancer` with more functionality, let's first refactor our current code. We will refactor for easy reuse across multiple applications.
 
-```
+```js
 // **********************************
 // Module: bootstrap.js 
 // **********************************
@@ -276,7 +310,7 @@ Before we extned the `LogEnhancer` with more functionality, let's first refactor
 })();
 ```
 
-```
+```js
 // *****************************************
 // Module: myApp/logger/LogDecorator.js
 // *****************************************
@@ -312,7 +346,7 @@ Before we extned the `LogEnhancer` with more functionality, let's first refactor
 })();
 ```
 
-```
+```js
 // ****************************************
 // Module: myApp/logger/LogEnhancer.js
 // ****************************************
@@ -360,13 +394,13 @@ Now we are ready to continue adding functionality to the `LogEnhancer`… functi
 
 <!--nextpage-->
 
-### Extending `LogEnhancer`
+#### Extending `LogEnhancer`
 
 To easily support the `$log` functionality which prepends classNames to output messages, we need to allow `$log` to generate unique instances of itself; where each instance is registered with a specific classname.
 
 Perhaps a code snippet will explain:
 
-```
+```js
 // ****************************************
 // Module: myApp/controllers/LoginController.js
 // ****************************************
@@ -398,14 +432,14 @@ Let's itemize the set of features that we still need in order to fully-enable ou
 *  Ability to build output with tokenized messages and complex parameters ( this will not be discussed in this article ) 
 *  Add `getInstance()` function with ability to generate custom instances with specific classNames 
 
-### Using Partial Application within our `LogEnhancer`
+#### Using Partial Application within our `LogEnhancer`
 
 We can use the partial application (sometimes known as Function Currying) technique to capture the specific log function that we want to intercept.
 This techinque allows us to use a generic handler that is partially applied to each `$log` function. 
 
 Personally I love elegant tricks like these!
 
-```
+```js
 // **********************************
 // Module: myApp/logger/LogEnhancer.js
 // **********************************
@@ -465,7 +499,7 @@ Personally I love elegant tricks like these!
 Notice that the `debugFn.call( … )` method also uses a `supplant()` method to transform any tokenized content into a final output string.
 e.g.
 
-```
+```js
     var user = { who:"Thomas Burleson"", email="ThomasBurleson@gmail.com"" };
     
     // This should output:
@@ -478,11 +512,11 @@ e.g.
 
 So not only have we intercepted the $log functions to prepend a timestamp, we also **supercharged** those functions to support tokenized strings.
 
-### Adding `$log.getInstance()`
+#### Adding `$log.getInstance()`
 
 Finally we need to implement the `getInstance()` method and publish it as part of the AngularJS `$log` service.
 
-```
+```js
 // **********************************
 // Module: myApp/logger/LogEnhancer.js
 // **********************************
@@ -570,7 +604,7 @@ We modified our partial application function `prepareLogFn()` to accept an optio
 
 Now if we modify our original example code:
 
-```
+```js
 (function()
 {
 	"use strict";
@@ -618,7 +652,7 @@ Then our browser console output would be:
 
 ```
 
-### Summary
+#### Summary
 
 
 This is just one example of how Decorators can be used to add or modify behavior in AngularJS applications. And the LogEnhancer could be further extended with features to:
@@ -636,7 +670,7 @@ I have created a GitHub repository with the source and examples used within this
 
 As a ending-show teaser, I extended the `$log` decorator to support logging with colors. Do YOU know how to achieve the results shown below?
 
-![image](http://solutionoptimist.com/wp-content/uploads/2013/10/logOutput.jpg)
+![demo_with_console](https://cloud.githubusercontent.com/assets/210413/2812333/34eb8596-ce51-11e3-8252-95ae2f338e14.jpg)
 
 Check out Demo #5 to see how Chrome Dev tools supports [console logging with color](https://developers.google.com/chrome-developer-tools/docs/console#styling_console_output_with_css).
 
