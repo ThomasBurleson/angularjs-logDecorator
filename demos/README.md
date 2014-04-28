@@ -21,4 +21,4 @@ cd ./demos/build; bower install
 * Demo 2 : Modifications to use **RequireJS**
 * Demo 3 : Modifications to use `LogEnhancer` class with `LogDecorator`
 * Demo 4 : Modifications to use `$log.getInstanc()` with classNames
-* Demo 5 : Modifications to support color CSS in console log
+* Demo 5 : Use of `angular-logDecorator` plugin (installed with Bower)

@@ -41,8 +41,12 @@ If you run a webserver with its webroot set to `./demos/webroot` you can explore
 
 ![Demo Snapshot](http://solutionoptimist.com/wp-content/uploads/2013/10/logEnhancer_large2.jpg "Demo Snapshot")
 
-See the [Demo ReadMe](https://github.com/ThomasBurleson/angularjs-logDecorator/tree/master/demos) for details.
+See the [Demo(s) ReadMe](https://github.com/ThomasBurleson/angularjs-logDecorator/tree/master/demos) for details.
 <br/>
+
+
+- - -
+
 
 ### Demo #5 - Using the AngularJS Enhanced Logging Plugin
 
