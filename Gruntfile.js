@@ -62,16 +62,16 @@ module.exports = function(grunt) {
             release: {
                 files: [
                     {
-                        src: './release/amd/angular-logDecorator.js',
-                        dest: './demos/webroot/assets/vendor/angular-logDecorator/amd/angular-logDecorator.js'
+                        src: './release/amd/angular-logX.js',
+                        dest: './demos/webroot/assets/vendor/angular-logX/release/amd/angular-logX.js'
                     }
                 ]
             },
             releaseMin: {
                 files: [
                     {
-                        src: './release/amd/angular-logDecorator.min.js',
-                        dest: './demos/webroot/assets/vendor/angular-logDecorator/amd/angular-logDecorator.min.js'
+                        src: './release/amd/angular-logX.min.js',
+                        dest: './demos/webroot/assets/vendor/angular-logX/release/amd/angular-logX.min.js'
                     }
                 ]
             }
@@ -93,8 +93,8 @@ module.exports = function(grunt) {
                         'utils' : 'mindspace/utils'
 
                     },
-                    out: './release/amd/angular-logDecorator.js',
-                    name: 'angular-logDecorator',
+                    out: './release/amd/angular-logX.js',
+                    name: 'angular-logX',
 
                     preserveLicenseComments: true,
                     optimize: "none"
@@ -111,8 +111,8 @@ module.exports = function(grunt) {
                         'utils' : 'mindspace/utils'
 
                     },
-                    out: './release/amd/angular-logDecorator.min.js',
-                    name: 'angular-logDecorator',
+                    out: './release/amd/angular-logX.min.js',
+                    name: 'angular-logX',
 
                     preserveLicenseComments: false,
                     optimize: "uglify"
@@ -139,9 +139,8 @@ module.exports = function(grunt) {
             LibCombinedToWorkEverywhere: {
                 template:'combined',
                 path: "./src",
-                main: 'angular-logDecorator',
-                //dstPath: "./release/common/angular-logDecorator.js"
-                dstPath: "./demos/webroot/assets/vendor/angular-logDecorator/release/common/angular-logDecorator.js"
+                main: 'angular-logX',
+                dstPath: "./release/common/angular-logX.all.js"
             },
 
             _defaults: {

@@ -11,9 +11,9 @@
     "use strict";
 
     var dependencies          = [
-            'mindspace/utils/supplant',
-            'mindspace/utils/DateTime',
-            'mindspace/utils/BrowserDetect'
+            'myApp/utils/supplant',
+            'myApp/utils/DateTime',
+            'myApp/utils/BrowserDetect'
         ];
 
     define( dependencies, function( supplant, DateTime, BrowserDetect )

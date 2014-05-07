@@ -13,9 +13,9 @@
 
     head.js(
 
-      { angular      : "/assets/vendor/angular/angular.js"                                           ,    size: "551057"  },
-      { require      : "/assets/vendor/requirejs/require.js"                                         ,    size: "80196"   },
-      { logDecorator : "/assets/vendor/angular-logDecorator/release/amd/angular-logDecorator.min.js" ,    size: "22205"   }
+      { angular      : "/assets/vendor/angular/angular.js"                           ,    size: "551057"  },
+      { require      : "/assets/vendor/requirejs/require.js"                         ,    size: "80196"   },
+      { logX         : "/assets/vendor/angular-logX/release/amd/angular-logX.min.js" ,    size: "22205"   }
 
     )
     .ready( "ALL", function() {
@@ -28,8 +28,17 @@
         	baseUrl : '/src/demo/5',
         	paths   :
         	{
-                'utils'        : 'myApp/utils'
-        	}
+                'utils'           : 'myApp/utils',
+                'mindspace.utils' : '/assets/vendor/angular-logX/release/amd/angular-logX.min'
+        	},
+            bundles: {
+                'mindspace.utils': [
+                    // List external AMDs that are known
+                    'mindspace/logger/ExternalLogger',
+                    'mindspace/utils/supplant',
+                    'mindspace/utils/makeTryCatch'
+                ]
+            }
         });
 
 
@@ -59,7 +68,7 @@
              * ( necessary to allow Loader splash pre-AngularJS activity to finish properly )
              */
 
-            angular.module(     appName,           [ 'mindspace.logDecorator' ]   )
+            angular.module(     appName,           [ 'mindspace.logX' ]   )
                    .value(      "session",         { sessionID : null }    )
                    .factory(    "authenticator",   Authenticator           )
                    .controller( "LoginController", LoginController         );

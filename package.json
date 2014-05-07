@@ -4,9 +4,9 @@
     "email": "ThomasBurleson@Gmail.com",
     "url": "http://www.solutionOptimist.com/"
   },
-  "main": "./release/amd/angular-logDecorator.js",
-  "name": "angular-logDecorator",
-  "version": "0.1.2",
+  "main": "./release/amd/angular-logX.js",
+  "name": "angular-logX",
+  "version": "0.1.5",
   "homepage": "http://solutionoptimist.com/2013/10/07/enhance-angularjs-logging-using-decorators/",
   "bugs": "",
   "repository": {

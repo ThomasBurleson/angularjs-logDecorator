@@ -1,26 +1,28 @@
-## AngularJS LogDecorator
+## AngularJS LogX 
+
+LogX provides an extended version to AngularJS $log utilities.
 
 This repository has several purposes:
 
-1.  Configured as the GitHub source for the Bower component `angular-logDecorator`
-2.  Provides source code, build scripts for the `angluar-logDecorator` library/component
+1.  Configured as the GitHub source for the Bower component `angular-logX`
+2.  Provides source code, build scripts for the `angluar-logX` library/component
 3.  Provides examples of using the LogDecorator: Demos #1 - #4
-4.  Provides an example of using the Bower component `mindspace.logDecorator` module within custom SPA: **Demo #5**
+4.  Provides an example of using the Bower component `mindspace.logX` module within custom SPA: **Demo #5**
 
 <br/>
 ### Using/Installing the Bower Component 
 
-Simple use the Bower command to install this component (logDecorator module/library) within your AMD SPA application
+Simple use the Bower command to install this component (angular-logX module/library) within your AMD SPA application
 
 ```txt
-bower install angular-logDecorator --save
+bower install angular-logX --save
 ```
 Which will install the release library code as a Bower package. 
 
 Afterwards, developers can use the following AngularJS plugins (for logging)  within their own AngularJS SPAs:
 
-1. Concatenated : `/angular-logDecorator/release/amd/angular-logDecorator.js`
-2. Minified : `/angular-logDecorator/release/amd/angular-logDecorator.min.js`
+1. Concatenated : `/angular-logX/release/amd/angular-logX.js`
+2. Minified : `/angular-logX/release/amd/angular-logX.min.js`
 
 <br/>
 
@@ -33,7 +35,7 @@ Developers should be aware that when the component is installed with Bower (as s
 <br/>
 ### Build the AMD Library (locally)
 
-The `angular-logDecorator` library is deployed as a concatenated AMD library. To build the library (and its minified version), clone the repository locally and open a Terminal window to execute the following commands.
+The `angular-logX` library is deployed as a concatenated AMD library. To build the library (and its minified version), clone the repository locally and open a Terminal window to execute the following commands.
 
 1. Install the **Grunt** libraries ```npm update```
 2. Build the libraries using ```Grunt``` 
@@ -41,7 +43,7 @@ The `angular-logDecorator` library is deployed as a concatenated AMD library. To
 The new compiled libraries are deployed to:
 
 1.  ```./release/amd/*.js```
-2.  ```./demos/webroot/assets/vendor/angular-logDecorator/amd``` 
+2.  ```./demos/webroot/assets/vendor/angular-logX/release/amd``` 
 
 
 > Future versions for deploying as CommonJS libraries will be available soon...
@@ -69,17 +71,17 @@ See the [Demo(s) ReadMe](https://github.com/ThomasBurleson/angularjs-logDecorato
 Demo #5 (bootstrap.js) shows an example of how to use the Logging classes within your own SPA.
 
 *  First we load the script using `head.js( )`. 
-*  Then simply include the *Enhanced Logging* module dependency `mindspace.logDecorator` when we configure the AngularJS SPA.
+*  Then simply include the *Enhanced Logging* module dependency `mindspace.logX` when we configure the AngularJS SPA.
 
 <br/>
 
 ```js
-    var pluginURL = "/assets/vendor/angular-logDecorator/release/amd/" ;
+    var pluginURL = "/assets/vendor/angular-logX/release/amd/" ;
     head.js(
 
       { angular      : "/assets/vendor/angular/angular.js"  },
       { require      : "/assets/vendor/requirejs/require.js" },
-      { logDecorator :  pluginURL + "angular-logDecorator.min.js"  }
+      { logX :  pluginURL + "angular-logX.min.js"  }
 
     )
     .ready( "ALL", function() {
@@ -92,8 +94,17 @@ Demo #5 (bootstrap.js) shows an example of how to use the Logging classes within
         	baseUrl : '/src/demo/5',
         	paths   :
         	{
-                'utils'        : 'myApp/utils'
-        	}
+                'utils'        : 'myApp/utils',
+                 'mindspace.utils' : '/assets/vendor/angular-logX/release/amd/angular-logX.min'
+        	},
+            bundles: {
+                'mindspace.utils': [
+                    // List external AMDs that are known
+                    'mindspace/logger/ExternalLogger',
+                    'mindspace/utils/supplant',
+                    'mindspace/utils/makeTryCatch'
+                ]
+            }
         });
 
 
@@ -115,10 +126,10 @@ Demo #5 (bootstrap.js) shows an example of how to use the Logging classes within
         {
             /**
              * Start the main application; include dependency on the Enhanced Logging plugin
-             * `mindspace.logDecorator`
+             * `mindspace.logX`
              */
 
-            angular.module(     appName,           [ 'mindspace.logDecorator' ]   )
+            angular.module(     appName,           [ 'mindspace.logX' ]   )
                    .value(      "session",         { sessionID : null }    )
                    .factory(    "authenticator",   Authenticator           )
                    .controller( "LoginController", LoginController         );
