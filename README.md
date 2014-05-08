@@ -14,7 +14,6 @@ Originally published as a set of classes that must be manually cloned and interg
 
 ---
 
-<br/>
 ### Using/Installing the Bower Component 
 
 Simple use the Bower command to install this component (angular-logX module/library) within your AMD SPA application
@@ -39,7 +38,6 @@ Developers should be aware that when the component is installed with Bower (as s
 
 --- 
 
-<br/>
 ### Use the Source Code and build the AMD Library (locally)
 
 The `angular-logX` library is deployed as a concatenated AMD library. To build the library (and its minified version), clone the repository locally and open a Terminal window to execute the following commands.
