@@ -1,6 +1,10 @@
 ## AngularJS LogX 
 
-LogX provides an extended version to AngularJS $log utilities.
+LogX provides an extended version to AngularJS $log utilities to deliver logging output similar to:
+
+![nglog-ouptut](https://f.cloud.github.com/assets/210413/2515299/4cdc1162-b442-11e3-80f0-3133890a355b.png)
+
+---
 
 This repository has several purposes:
 
