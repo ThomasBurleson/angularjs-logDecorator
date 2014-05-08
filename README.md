@@ -29,7 +29,7 @@ Afterwards, developers can use the following AngularJS plugins (for logging)  wi
 2. Minified : `/angular-logX/release/amd/angular-logX.min.js`
 
 
-> It is important to note that currently only an AMD library is available for use within AngularJS Browser SPA applications. <br/>This means that custom SPA(s) must use **RequireJS**. <br/>Future releases will provide CommonJS versions [for NodeJS apps] and UMD versions of the library.
+> It is important to note that currently only an AMD library is available for use within AngularJS Browser SPA applications. <br/>This means that custom SPA(s) using `/release/amd/angular-logx.js` must use **RequireJS**. <br/>Future releases will provide CommonJS versions [for NodeJS apps] and UMD versions of the library.
 
 
 Developers should be aware that when the component is installed with Bower (as shown above), the pre-build source is not available. Full source is available within the Git repository; so clone it and *play*.
