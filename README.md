@@ -6,12 +6,12 @@ LogX provides an extended version to AngularJS $log utilities to deliver logging
 
 ---
 
-This repository has several purposes:
+Originally published as a set of classes that must be manually cloned and intergrated into each project, this repository has evolved and now has multiple purposes:
 
 1.  Configured as the GitHub source for the Bower component `angular-logX`
 2.  Provides source code, build scripts for the `angluar-logX` library/component
-3.  Provides examples of using the LogDecorator: Demos #1 - #4
-4.  Provides an example of using the Bower component `mindspace.logX` module within custom SPA: **Demo #5**
+3.  Provides examples of manually using the $log decorator classes: Demos #1 - #4
+4.  Provides an example of using the Bower **angular-logX** component with its `mindspace.logX` angular module. See the custom SPA: **Demo #5**
 
 <br/>
 ### Using/Installing the Bower Component 
