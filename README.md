@@ -4,14 +4,15 @@ LogX provides an extended version to AngularJS $log utilities to deliver logging
 
 ![nglog-ouptut](https://f.cloud.github.com/assets/210413/2515299/4cdc1162-b442-11e3-80f0-3133890a355b.png)
 
----
-
+<br/>
 Originally published as a set of classes that must be manually cloned and intergrated into each project, this repository has evolved and now has multiple purposes:
 
 1.  Configured as the GitHub source for the Bower component `angular-logX`
 2.  Provides source code, build scripts for the `angluar-logX` library/component
 3.  Provides examples of manually using the $log decorator classes: Demos #1 - #4
 4.  Provides an example of using the Bower **angular-logX** component with its `mindspace.logX` angular module. See the custom SPA: **Demo #5**
+
+---
 
 <br/>
 ### Using/Installing the Bower Component 
@@ -36,8 +37,10 @@ Afterwards, developers can use the following AngularJS plugins (for logging)  wi
 
 Developers should be aware that when the component is installed with Bower (as shown above), the pre-build source is not available. Full source is available within the Git repository; so clone it and *play*.
 
+--- 
+
 <br/>
-### Build the AMD Library (locally)
+### Use the Source Code and build the AMD Library (locally)
 
 The `angular-logX` library is deployed as a concatenated AMD library. To build the library (and its minified version), clone the repository locally and open a Terminal window to execute the following commands.
 
