@@ -6,13 +6,6 @@
      *
      * If custom applications, simply add `mindspace.logX` namespace to the application's module
      * dependency list
-     *
-     * This module also exposes (via require( <xxx> ) calls the following:
-     *
-     *   - supplant()
-     *   - makeTryCatch()
-     *   - ExternalLogger.getInstance()
-     *
      */
 
     require([
