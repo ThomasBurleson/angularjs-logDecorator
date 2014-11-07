@@ -4,11 +4,11 @@
     /**
      * Build a `mindspace.logX` module that registers and configures the LogDecorator for $log
      *
-     * If custom applications, simply add `mindspace.logX` namespace to the application's module
-     * dependency list
+     * If custom applications need decorated log entries, simply require `angular-logX`
+     * and add `mod.name` to the application's module dependency list (where `mod = require('angular-logX')`).
      */
 
-    require([
+    define([
 
           "mindspace/logger/LogDecorator"
 
@@ -16,7 +16,7 @@
     {
         var moduleName = 'mindspace.logX';
 
-        angular.module( moduleName , [ ] )
+        return angular.module( moduleName , [ ] )
                .config( LogDecorator            );
 
     });
