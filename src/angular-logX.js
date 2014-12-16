@@ -3,29 +3,20 @@
 
     /**
      * Build a `mindspace.logX` module that registers and configures the LogDecorator for $log
-     * Also load the ExternalLogger for subsequent require(["mindspace/logger/ExternalLogger"])
      *
-     * If custom applications, simply add `mindspace.logX` namespace to the application's module
-     * dependency list
-     *
-     * This module also exposes (via require( <xxx> ) calls the following:
-     *
-     *   - supplant()
-     *   - makeTryCatch()
-     *   - ExternalLogger.getInstance()
-     *
+     * If custom applications need decorated log entries, simply require `angular-logX`
+     * and add `mod.name` to the application's module dependency list (where `mod = require('angular-logX')`).
      */
 
-    require([
+    define([
 
           "mindspace/logger/LogDecorator"
-        , "mindspace/logger/ExternalLogger"
 
-    ], function( LogDecorator, ExternalLogger )
+    ], function( LogDecorator )
     {
         var moduleName = 'mindspace.logX';
 
-        angular.module( moduleName , [ ] )
+        return angular.module( moduleName , [ ] )
                .config( LogDecorator            );
 
     });
